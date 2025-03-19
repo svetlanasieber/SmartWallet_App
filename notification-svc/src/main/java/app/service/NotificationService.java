@@ -38,12 +38,10 @@ public class NotificationService {
 
     public NotificationPreference upsertPreference(UpsertNotificationPreference dto) {
 
-        // upsert
-
-        // 1. try to find if such exist in the database
+ 
         Optional<NotificationPreference> userNotificationPreferenceOptional = preferenceRepository.findByUserId(dto.getUserId());
 
-        // 2. if exists - just update it
+       
         if (userNotificationPreferenceOptional.isPresent()) {
             NotificationPreference preference = userNotificationPreferenceOptional.get();
             preference.setContactInfo(dto.getContactInfo());
@@ -53,8 +51,7 @@ public class NotificationService {
             return preferenceRepository.save(preference);
         }
 
-        // Here I build a new entity object!
-        // 3. if does not exist - just create new one
+
         NotificationPreference notificationPreference = NotificationPreference.builder()
                 .userId(dto.getUserId())
                 .type(DtoMapper.fromNotificationTypeRequest(dto.getType()))
@@ -86,7 +83,7 @@ public class NotificationService {
         message.setSubject(notificationRequest.getSubject());
         message.setText(notificationRequest.getBody());
 
-        // Entity building
+       
         Notification notification = Notification.builder()
                 .subject(notificationRequest.getSubject())
                 .body(notificationRequest.getBody())
