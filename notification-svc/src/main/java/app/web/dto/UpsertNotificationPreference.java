@@ -5,7 +5,7 @@ import lombok.Data;
 
 import java.util.UUID;
 
-// DTO = contract
+
 @Data
 public class UpsertNotificationPreference {
 
