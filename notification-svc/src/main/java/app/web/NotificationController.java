@@ -54,10 +54,10 @@ public class NotificationController {
     @PostMapping
     public ResponseEntity<NotificationResponse> sendNotification(@RequestBody NotificationRequest notificationRequest) {
 
-        // Entity
+        
         Notification notification = notificationService.sendNotification(notificationRequest);
 
-        // DTO
+        
         NotificationResponse response = DtoMapper.fromNotification(notification);
 
         return ResponseEntity
@@ -87,7 +87,7 @@ public class NotificationController {
                 .body(responseDto);
     }
 
-    // DELETE /api/v1/notifications
+   
     @DeleteMapping
     public ResponseEntity<Void> clearNotificationHistory(@RequestParam(name = "userId") UUID userId) {
 
@@ -96,7 +96,7 @@ public class NotificationController {
         return ResponseEntity.ok().body(null);
     }
 
-    //  Endpoint: GET /api/v1/notifications/test  = "Hello, unknown user!"
+  
     @GetMapping("/test")
     public ResponseEntity<String> getHelloWorld(@RequestParam(name = "name") String name) {
 
