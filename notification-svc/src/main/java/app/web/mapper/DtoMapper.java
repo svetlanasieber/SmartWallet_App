@@ -11,7 +11,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class DtoMapper {
 
-    // Mapping logic: прехвърляме един тип данни към друг
+   
     public static NotificationType fromNotificationTypeRequest(NotificationTypeRequest dto) {
 
         return switch (dto) {
@@ -19,7 +19,7 @@ public class DtoMapper {
         };
     }
 
-    // Build dto from entity
+  
     public static NotificationPreferenceResponse fromNotificationPreference(NotificationPreference entity) {
 
         return NotificationPreferenceResponse.builder()
@@ -33,7 +33,7 @@ public class DtoMapper {
 
     public static NotificationResponse fromNotification(Notification entity) {
 
-        // DTO building!
+    
         return NotificationResponse.builder()
                 .subject(entity.getSubject())
                 .status(entity.getStatus())
